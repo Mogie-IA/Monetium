@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import logoSrc from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -7,8 +8,8 @@ export function Footer() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-2xl font-serif font-bold tracking-widest text-primary mb-6 block">
-              MONETIUM
+            <Link href="/" className="mb-6 block" data-testid="link-footer-logo">
+              <img src={logoSrc} alt="Monetium" className="h-14 w-auto" />
             </Link>
             <p className="text-muted-foreground max-w-md text-lg">
               Creating experiences that connect brands with people. Bold, strategic, and memorable.

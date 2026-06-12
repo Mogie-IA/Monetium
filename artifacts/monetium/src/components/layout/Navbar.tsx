@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
+import logoSrc from "@/assets/logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
@@ -44,8 +45,8 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-serif font-bold tracking-widest text-primary flex items-center gap-2">
-          MONETIUM
+        <Link href="/" className="flex items-center" data-testid="link-logo">
+          <img src={logoSrc} alt="Monetium" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
