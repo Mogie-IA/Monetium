@@ -6,9 +6,7 @@ export function Services() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
@@ -18,16 +16,19 @@ export function Services() {
   };
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-card border-y border-border">
+    <section id="services" className="py-24 md:py-32 bg-muted/40 border-y border-border">
       <div className="container mx-auto px-6 lg:px-12">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="mb-16"
         >
-          <h2 className="text-sm font-medium text-primary tracking-widest uppercase mb-4">What We Do</h2>
+          <span className="inline-block text-xs font-medium text-foreground bg-background border border-border px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+            What We Do
+          </span>
           <h3 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
             Our Core Expertise
           </h3>
@@ -38,34 +39,30 @@ export function Services() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.id}
               variants={itemVariants}
-              className={`group bg-background border border-border p-10 hover:border-primary/50 transition-all duration-500 relative overflow-hidden rounded-[5px] ${
-                index === 3 ? "lg:col-span-1 lg:col-start-1" : ""
-              } ${index === 4 ? "lg:col-span-2" : ""}`}
+              className="bg-background border border-border/60 rounded-2xl p-8 flex flex-col gap-0 hover:shadow-md transition-shadow duration-300"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-card border border-border flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:border-primary/30 transition-all duration-500 rounded-[5px]">
-                  <service.icon className="w-6 h-6" />
-                </div>
-                
-                <h4 className="text-xl font-serif font-bold text-foreground mb-4">
-                  {service.title}
-                </h4>
-                
-                <p className="text-muted-foreground font-light leading-relaxed">
-                  {service.description}
-                </p>
+              {/* Icon container — solid dark fill */}
+              <div className="w-11 h-11 bg-foreground flex items-center justify-center rounded-xl mb-8 shrink-0">
+                <service.icon className="w-5 h-5 text-background" />
               </div>
+
+              <h4 className="text-xl font-bold text-foreground mb-3">
+                {service.title}
+              </h4>
+
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {service.description}
+              </p>
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );
