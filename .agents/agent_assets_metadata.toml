@@ -1,0 +1,80 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "O2xZ3NMS5V2uomysZZkXa"
+uri = "file://artifacts/monetium/public/images/hero.png"
+type = "image"
+title = "Cinematic hero brand activation"
+
+[[generated]]
+id = "vO9v3n6Lo-zybHh6Al0bn"
+uri = "file://artifacts/monetium/public/images/about.png"
+type = "image"
+title = "Behind the scenes production"
+
+[[generated]]
+id = "_h78UvRKqRa5LgHbJNa-F"
+uri = "file://artifacts/monetium/public/images/portfolio-flytime.png"
+type = "image"
+title = "Concert brand experience"
+
+[[generated]]
+id = "b0CrzwrI2D_bTv-x-g9Z8"
+uri = "file://artifacts/monetium/public/images/portfolio-unilever.png"
+type = "image"
+title = "Massive sales conference"
+
+[[generated]]
+id = "YtS_-qPbrHCM_ZD8i6Hu5"
+uri = "file://artifacts/monetium/public/images/portfolio-cch.png"
+type = "image"
+title = "Luxury appreciation event"
+
+[[generated]]
+id = "aT80KHyJdWSdXNREl_Rcz"
+uri = "file://artifacts/monetium/public/images/brand-coca-cola-1.png"
+type = "image"
+title = "Coca cola brand activation"
+
+[[generated]]
+id = "zBvtLY0APnqbo0asBjgp7"
+uri = "file://artifacts/monetium/public/images/brand-coca-cola-2.png"
+type = "image"
+title = "Coca cola event stage"
+
+[[generated]]
+id = "O9PsyW58LDT8gOnbu-hk2"
+uri = "file://artifacts/monetium/public/images/brand-unilever-1.png"
+type = "image"
+title = "Unilever brand installation"
+
+[[generated]]
+id = "Vf8CiY6XCG10ZRWSNTnRI"
+uri = "file://artifacts/monetium/public/images/brand-nivea-1.png"
+type = "image"
+title = "Nivea brand pop-up"
+
+[[generated]]
+id = "fRVnHwHlTL3vnDpSWYCdM"
+uri = "file://artifacts/monetium/public/images/gallery-coca-cola-1.png"
+type = "image"
+title = "Coca cola stage performance"
+
+[[generated]]
+id = "2Kk1Ri2CbG5F6u7EgHO-7"
+uri = "file://artifacts/monetium/public/images/gallery-coca-cola-2.png"
+type = "image"
+title = "Coca cola VIP lounge"
+
+[[generated]]
+id = "16nzKytbOEfp6D_FzhnuB"
+uri = "file://artifacts/monetium/public/images/gallery-coca-cola-3.png"
+type = "image"
+title = "Coca cola immersive tunnel"
+
+[[generated]]
+id = "0FgzPiAHNlRP6U5F73yXJ"
+uri = "file://artifacts/monetium/public/images/gallery-coca-cola-4.png"
+type = "image"
+title = "Coca cola outdoor festival"

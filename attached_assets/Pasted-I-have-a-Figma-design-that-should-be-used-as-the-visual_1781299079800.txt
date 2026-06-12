@@ -1,0 +1,275 @@
+I have a Figma design that should be used as the visual reference for this website. Please build the website by closely following the Figma design style, layout direction, spacing, typography, colour usage, button styles, card styles, visual hierarchy, and overall UI feel.
+
+Do not create a completely different design. Use the Figma design as the main design reference, but replace the content with the landing page content from the document I will provide.
+
+The website should be built as a premium, classy, modern landing page for an integrated marketing communications and experiential marketing agency.
+
+The website should have both desktop and mobile responsive views.
+
+Main goal:
+Create a polished, high-end agency landing page that presents the brand, services, client brands, portfolio highlights, and contact CTA clearly while maintaining the exact design style and feel from the Figma reference.
+
+Use this website flow:
+
+1. Home / Hero Section
+   Use a bold, premium hero section.
+
+Headline:
+“We Create Experiences That Connect Brands with People.”
+
+Subheadline:
+“Immersive activations, unforgettable moments, lasting impact.”
+
+CTA buttons:
+Primary: “Let’s Build Your Next Experience”
+Secondary: “View Our Work”
+
+The hero should feel cinematic, classy, and visually strong. Use the Figma design style for layout, spacing, image placement, background treatment, and buttons.
+
+2. About Section
+
+Section title:
+“About Us”
+
+Use this content:
+“We are an integrated marketing communications agency that specializes in disruptive, consumer-focused experiences. From strategy to execution, our team delivers innovative campaigns across Nigeria that challenge convention, build meaningful brand partnerships, and engage consumers in ways that create lasting bonds.”
+
+Add supporting line:
+“We help brands move from being seen to being remembered.”
+
+Follow the Figma style for section layout. If the Figma uses image cards, split layouts, gradients, large typography, or layered visuals, apply that same style here.
+
+3. Services Section
+
+Section title:
+“Our Services” or “What We Do”
+
+Create service cards for:
+
+Event Activations
+“From live experiences, product launches, business conventions, and plug-ins, we design experiences that captivate.”
+
+Brand Engagements
+“Brand activations, pop-ups, roadshows, and immersive installations that bring your brand to life.”
+
+Sponsorships & Partnerships
+“Connecting brands with the right platforms and audiences.”
+
+Tactical Field Force Deployment
+“Putting trained brand representatives on the ground to engage directly with consumers, drive sales, and ensure visibility at key touchpoints.”
+
+POSM Conceptualization and Deployment
+“Designing and placing Point-of-Sale Materials that attract attention, communicate the brand message, and influence purchase decisions at retail locations.”
+
+Use the card style, icon style, border radius, shadows, spacing, and hover effects from the Figma design.
+
+4. Brands Section
+
+Section title:
+“Brands We’ve Brought to Life”
+
+Subtitle:
+“From global consumer brands to industry leaders, we design experiences that connect people, products, and memorable moments.”
+
+Show all brands together in a clean premium brand grid.
+
+Brands to include:
+Coca-Cola
+Coca-Cola Hellenic
+Nivea
+Unilever
+Knorr
+Royco
+Vaseline
+Closeup
+Eucerin
+Morning Fresh
+Dano
+SLB
+
+Use logo placeholders if actual logos are not provided.
+
+Below the brand grid, create a Featured Brand Preview panel.
+
+The Featured Brand Preview should:
+
+* Show one selected brand at a time
+* Automatically rotate between brands every few seconds
+* Allow users to click any brand logo to manually change the featured brand
+* Show 3 to 5 preview images for the selected brand
+* Include a “View Full Experience” button
+
+When “View Full Experience” is clicked, it should lead to a dedicated brand gallery page.
+
+5. Brand Gallery Page
+
+Create a reusable brand gallery page template.
+
+Each brand page should include:
+
+* Brand name
+* Brand logo placeholder
+* Short project description
+* Full image gallery
+* Masonry or stylish image grid
+* Image lightbox preview
+* Next and previous image controls
+* Back to homepage button
+* CTA section
+
+CTA text:
+“Want an experience like this for your brand?”
+
+CTA button:
+“Start a Project”
+
+The gallery page should feel like a premium case study/gallery page, not a basic photo album.
+
+6. Portfolio Highlights Section
+
+Section title:
+“Portfolio Highlights”
+
+Create three premium project cards:
+
+Flytime Live Experience
+“Coke Studio brand experience delivered three years in a row.”
+
+Unilever Sales Conference
+“Over 5,000 personnel in attendance.”
+
+Council of Chiefs
+“CCH customer appreciation experience delivered consecutively for two years.”
+
+Use the Figma design style for image cards, overlays, spacing, and typography.
+
+7. Why Choose Us Section
+
+Section title:
+“Why Choose Us”
+
+Use this content:
+“We are committed to delivering bold, creative solutions that are meaningful, impactful, and measurable.”
+
+Create three cards:
+
+Meaningful
+“Experiences designed around real consumer connection.”
+
+Impactful
+“Campaigns that capture attention and leave a lasting impression.”
+
+Measurable
+“Execution focused on visibility, engagement, and ROI.”
+
+8. Contact Section
+
+Section title:
+“Ready to create your next unforgettable experience?”
+
+Supporting text:
+“Let’s help your brand connect with the right audience through bold, strategic, and memorable experiences.”
+
+Create a contact form with:
+Name
+Email
+Phone number
+Brand / Company name
+Project type
+Message
+
+CTA button:
+“Let’s Build Your Next Experience”
+
+Also include placeholders for:
+Email
+Phone number
+WhatsApp
+Instagram
+LinkedIn
+
+9. Navigation
+
+Create a sticky navigation bar that follows the Figma style.
+
+Nav items:
+Home
+About
+Services
+Brands
+Portfolio
+Why Us
+Contact
+
+The nav items should smoothly scroll to the matching sections on the landing page.
+
+Add a CTA button in the nav:
+“Let’s Build Your Next Experience”
+
+10. Footer
+
+Footer should include:
+
+* Logo placeholder
+* Short tagline: “Creating experiences that connect brands with people.”
+* Quick links
+* Social links
+* Copyright text
+
+11. Responsiveness
+
+Build both desktop and mobile views.
+
+Desktop:
+
+* Follow the Figma desktop layout closely
+* Use clean spacing, strong section hierarchy, and premium visuals
+
+Mobile:
+
+* Convert the layout into a clean responsive mobile experience
+* Use a hamburger menu
+* Stack sections properly
+* Make cards easy to read
+* Ensure brand grid, featured brand preview, and galleries work well on mobile
+* Keep CTA buttons visible and easy to tap
+
+12. Technical Requirements
+
+Use:
+
+* React
+* Vite
+* Tailwind CSS
+* React Router for brand gallery pages
+* Reusable components
+* Data arrays for services, brands, portfolio highlights, and gallery images
+* Placeholder images where real images are not yet available
+* Clean folder structure
+
+Suggested folder structure:
+src/
+components/
+Navbar.jsx
+Hero.jsx
+About.jsx
+Services.jsx
+Brands.jsx
+FeaturedBrandPreview.jsx
+Portfolio.jsx
+WhyChooseUs.jsx
+Contact.jsx
+Footer.jsx
+Gallery.jsx
+pages/
+Home.jsx
+BrandPage.jsx
+data/
+services.js
+brands.js
+portfolio.js
+galleries.js
+assets/
+
+Important:
+The final website must match the Figma design style as closely as possible while using the content from the landing page document. Prioritize visual quality, responsiveness, clean code, smooth animations, and a premium user experience.
