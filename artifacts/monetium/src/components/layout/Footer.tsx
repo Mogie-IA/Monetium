@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import logoSrc from "@/assets/logo.png";
+import logoSrc from "@/assets/logo-light.png";
 
 export function Footer() {
   return (
