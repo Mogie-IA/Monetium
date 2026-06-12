@@ -11,7 +11,7 @@ export function Hero() {
           alt="Brand Activation Event"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-background/80 bg-gradient-to-t from-background via-background/60 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -20,7 +20,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-foreground leading-[1.1] mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-[1.1] mb-6"
           >
             We Create <span className="text-primary italic">Experiences</span> That Connect Brands with People.
           </motion.h1>
@@ -29,7 +29,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-xl md:text-2xl text-foreground/80 mb-10 max-w-2xl font-light"
+            className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl font-light"
           >
             Immersive activations, unforgettable moments, lasting impact.
           </motion.p>
@@ -49,7 +49,7 @@ export function Hero() {
             </a>
             <a
               href="#portfolio"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-foreground/30 text-foreground text-lg font-medium hover:bg-foreground/10 hover:border-foreground/50 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/40 text-white text-lg font-medium hover:bg-white/10 hover:border-white/60 transition-colors"
             >
               View Our Work
             </a>

@@ -36,11 +36,11 @@ export function Portfolio() {
                 alt={item.title} 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="absolute inset-0 p-8 flex flex-col justify-end translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                <h4 className="text-2xl font-serif font-bold text-foreground mb-3">{item.title}</h4>
-                <p className="text-muted-foreground text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-6">
+                <h4 className="text-2xl font-serif font-bold text-white mb-3">{item.title}</h4>
+                <p className="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-6">
                   {item.description}
                 </p>
                 <div className="flex items-center text-primary text-sm font-medium uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">

@@ -20,7 +20,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 80);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -41,7 +41,9 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/90 backdrop-blur-md border-b border-border py-4" : "bg-transparent py-6"
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-border py-3 shadow-sm"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
@@ -56,7 +58,11 @@ export function Navbar() {
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                isScrolled
+                  ? "text-foreground hover:text-primary"
+                  : "text-white/90 hover:text-white"
+              }`}
             >
               {item.label}
             </a>
@@ -64,7 +70,8 @@ export function Navbar() {
           <a
             href="/#contact"
             onClick={(e) => handleNavClick(e, "/#contact")}
-            className="px-5 py-2.5 bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+            className="px-5 py-2.5 bg-primary text-white font-medium text-sm hover:bg-primary/90 transition-colors"
+            data-testid="button-nav-cta"
           >
             Let's Build Your Next Experience
           </a>
@@ -72,8 +79,9 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden text-foreground p-2"
+          className={`lg:hidden p-2 transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          data-testid="button-mobile-menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -86,7 +94,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background border-b border-border overflow-hidden"
+            className="lg:hidden bg-white border-b border-border overflow-hidden shadow-lg"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navItems.map((item) => (
@@ -94,7 +102,7 @@ export function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-lg font-medium text-foreground py-2 border-b border-border/50"
+                  className="text-lg font-medium text-foreground py-2 border-b border-border/50 hover:text-primary transition-colors"
                 >
                   {item.label}
                 </a>
@@ -102,7 +110,7 @@ export function Navbar() {
               <a
                 href="/#contact"
                 onClick={(e) => handleNavClick(e, "/#contact")}
-                className="mt-4 px-5 py-3 bg-primary text-primary-foreground text-center font-medium"
+                className="mt-4 px-5 py-3 bg-primary text-white text-center font-medium hover:bg-primary/90 transition-colors"
               >
                 Let's Build Your Next Experience
               </a>
