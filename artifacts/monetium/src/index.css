@@ -48,15 +48,15 @@
 
 :root, .dark {
   /* DARK THEME BY DEFAULT */
-  --background: 0 0% 4%;
+  --background: 0 0% 0%;
   --foreground: 42 20% 92%;
-  --border: 0 0% 13%;
-  --input: 0 0% 13%;
-  --ring: 44 56% 54%;
+  --border: 0 0% 12%;
+  --input: 0 0% 12%;
+  --ring: 0 85% 50%;
 
-  --card: 0 0% 8%;
+  --card: 0 0% 5%;
   --card-foreground: 42 20% 92%;
-  --card-border: 0 0% 13%;
+  --card-border: 0 0% 12%;
 
   --popover: 0 0% 8%;
   --popover-foreground: 42 20% 92%;

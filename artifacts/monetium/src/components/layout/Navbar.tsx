@@ -46,7 +46,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
         <Link href="/" className="flex items-center" data-testid="link-logo">
-          <img src={logoSrc} alt="Monetium" className="h-10 w-auto" />
+          <img src={logoSrc} alt="Monetium" className="h-16 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
