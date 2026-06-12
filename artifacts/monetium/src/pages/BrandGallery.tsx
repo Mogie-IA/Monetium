@@ -113,11 +113,11 @@ export default function BrandGallery() {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-32 p-12 bg-card border border-border text-center">
+          <div className="mt-32 p-12 bg-card border border-border text-center rounded-[5px]">
             <h3 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
               Want an experience like this for your brand?
             </h3>
-            <Link href="/#contact" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-colors">
+            <Link href="/#contact" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-colors rounded-[5px]">
               Start a Project
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>

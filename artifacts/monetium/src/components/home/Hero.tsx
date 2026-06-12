@@ -42,14 +42,14 @@ export function Hero() {
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-colors rounded-[5px]"
             >
               Let's Build Your Next Experience
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a
               href="#portfolio"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/40 text-white text-lg font-medium hover:bg-white/10 hover:border-white/60 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/40 text-white text-lg font-medium hover:bg-white/10 hover:border-white/60 transition-colors rounded-[5px]"
             >
               View Our Work
             </a>

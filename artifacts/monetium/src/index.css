@@ -79,7 +79,7 @@
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Cormorant Garamond', serif;
   --app-font-mono: monospace;
-  --radius: 0rem;
+  --radius: 0.3125rem;
 }
 
 @layer base {

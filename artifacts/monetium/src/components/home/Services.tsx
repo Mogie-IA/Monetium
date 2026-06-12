@@ -44,14 +44,14 @@ export function Services() {
             <motion.div
               key={service.id}
               variants={itemVariants}
-              className={`group bg-background border border-border p-10 hover:border-primary/50 transition-all duration-500 relative overflow-hidden ${
+              className={`group bg-background border border-border p-10 hover:border-primary/50 transition-all duration-500 relative overflow-hidden rounded-[5px] ${
                 index === 3 ? "lg:col-span-1 lg:col-start-1" : ""
               } ${index === 4 ? "lg:col-span-2" : ""}`}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-card border border-border flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:border-primary/30 transition-all duration-500">
+                <div className="w-14 h-14 bg-card border border-border flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:border-primary/30 transition-all duration-500 rounded-[5px]">
                   <service.icon className="w-6 h-6" />
                 </div>
                 

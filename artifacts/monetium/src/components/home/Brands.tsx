@@ -49,9 +49,9 @@ export function Brands() {
             <motion.button
               key={brand.id}
               onClick={() => handleBrandClick(brand)}
-              className={`h-24 flex items-center justify-center border transition-all duration-300 ${
+              className={`h-24 flex items-center justify-center border transition-all duration-300 rounded-[5px] ${
                 selectedBrand.id === brand.id 
-                  ? "bg-card border-primary text-primary shadow-[0_0_15px_rgba(201,168,76,0.1)]" 
+                  ? "bg-card border-primary text-primary shadow-[0_0_15px_rgba(230,0,0,0.1)]" 
                   : "bg-transparent border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground"
               }`}
             >
@@ -65,7 +65,7 @@ export function Brands() {
         </div>
 
         {/* Featured Brand Preview */}
-        <div className="bg-card border border-border p-8 lg:p-12 relative overflow-hidden">
+        <div className="bg-card border border-border p-8 lg:p-12 relative overflow-hidden rounded-[5px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedBrand.id}
@@ -82,7 +82,7 @@ export function Brands() {
                 <p className="text-muted-foreground mb-8">
                   Premium brand experiences, consumer activations, and unforgettable moments designed exclusively for {selectedBrand.name}.
                 </p>
-                <Link href={`/brands/${selectedBrand.id}`} className="inline-flex items-center justify-center px-6 py-3 bg-transparent border border-primary text-primary font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300 group">
+                <Link href={`/brands/${selectedBrand.id}`} className="inline-flex items-center justify-center px-6 py-3 bg-transparent border border-primary text-primary font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300 group rounded-[5px]">
                   View Full Experience
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>

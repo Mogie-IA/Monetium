@@ -32,13 +32,13 @@ export function Footer() {
               <li><a href="mailto:info@monetium.ng" className="text-muted-foreground hover:text-primary transition-colors">info@monetium.ng</a></li>
               <li><a href="tel:+2340000000000" className="text-muted-foreground hover:text-primary transition-colors">+234 000 000 0000</a></li>
               <li className="flex gap-4 pt-2">
-                <a href="#" className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-foreground hover:text-primary transition-colors" aria-label="Instagram">
+                <a href="#" className="w-10 h-10 rounded-[5px] bg-muted flex items-center justify-center text-foreground hover:text-primary hover:bg-primary/10 transition-colors" aria-label="Instagram">
                   <FaInstagram size={20} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+                <a href="#" className="w-10 h-10 rounded-[5px] bg-muted flex items-center justify-center text-foreground hover:text-primary hover:bg-primary/10 transition-colors" aria-label="LinkedIn">
                   <FaLinkedin size={20} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
+                <a href="#" className="w-10 h-10 rounded-[5px] bg-muted flex items-center justify-center text-foreground hover:text-primary hover:bg-primary/10 transition-colors" aria-label="WhatsApp">
                   <FaWhatsapp size={20} />
                 </a>
               </li>

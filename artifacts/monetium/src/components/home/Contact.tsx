@@ -91,7 +91,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-background p-8 lg:p-12 border border-border"
+            className="bg-background p-8 lg:p-12 border border-border rounded-[5px]"
           >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -103,7 +103,7 @@ export function Contact() {
                       <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Doe" className="bg-card border-border rounded-none focus-visible:ring-primary" {...field} />
+                          <Input placeholder="John Doe" className="bg-card border-border rounded-[5px] focus-visible:ring-primary" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -116,7 +116,7 @@ export function Contact() {
                       <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="john@example.com" type="email" className="bg-card border-border rounded-none focus-visible:ring-primary" {...field} />
+                          <Input placeholder="john@example.com" type="email" className="bg-card border-border rounded-[5px] focus-visible:ring-primary" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -132,7 +132,7 @@ export function Contact() {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="+234 000 000 0000" className="bg-card border-border rounded-none focus-visible:ring-primary" {...field} />
+                          <Input placeholder="+234 000 000 0000" className="bg-card border-border rounded-[5px] focus-visible:ring-primary" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -145,7 +145,7 @@ export function Contact() {
                       <FormItem>
                         <FormLabel>Brand / Company</FormLabel>
                         <FormControl>
-                          <Input placeholder="Acme Corp" className="bg-card border-border rounded-none focus-visible:ring-primary" {...field} />
+                          <Input placeholder="Acme Corp" className="bg-card border-border rounded-[5px] focus-visible:ring-primary" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -161,11 +161,11 @@ export function Contact() {
                       <FormLabel>Project Type</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-card border-border rounded-none focus:ring-primary">
+                          <SelectTrigger className="bg-card border-border rounded-[5px] focus:ring-primary">
                             <SelectValue placeholder="Select a project type" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="bg-card border-border rounded-none">
+                        <SelectContent className="bg-card border-border rounded-[5px]">
                           <SelectItem value="event-activation">Event Activation</SelectItem>
                           <SelectItem value="brand-engagement">Brand Engagement</SelectItem>
                           <SelectItem value="sponsorship">Sponsorship & Partnership</SelectItem>
@@ -188,7 +188,7 @@ export function Contact() {
                       <FormControl>
                         <Textarea 
                           placeholder="Tell us about your project..." 
-                          className="min-h-[120px] bg-card border-border rounded-none focus-visible:ring-primary" 
+                          className="min-h-[120px] bg-card border-border rounded-[5px] focus-visible:ring-primary" 
                           {...field} 
                         />
                       </FormControl>
@@ -199,7 +199,7 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-colors"
+                  className="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-colors rounded-[5px]"
                 >
                   Let's Build Your Next Experience
                   <ArrowRight className="ml-2 w-5 h-5" />

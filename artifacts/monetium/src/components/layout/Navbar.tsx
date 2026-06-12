@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
-import logoSrc from "@/assets/logo.png";
+import logoDark from "@/assets/logo-dark.png";
+import logoLight from "@/assets/logo-light.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
@@ -48,7 +49,11 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
         <Link href="/" className="flex items-center" data-testid="link-logo">
-          <img src={logoSrc} alt="Monetium" className="h-16 w-auto" />
+          <img
+            src={isScrolled ? logoLight : logoDark}
+            alt="Monetium"
+            className="h-16 w-auto transition-opacity duration-300"
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -70,7 +75,7 @@ export function Navbar() {
           <a
             href="/#contact"
             onClick={(e) => handleNavClick(e, "/#contact")}
-            className="px-5 py-2.5 bg-primary text-white font-medium text-sm hover:bg-primary/90 transition-colors"
+            className="px-5 py-2.5 bg-primary text-white font-medium text-sm hover:bg-primary/90 transition-colors rounded-[5px]"
             data-testid="button-nav-cta"
           >
             Let's Build Your Next Experience

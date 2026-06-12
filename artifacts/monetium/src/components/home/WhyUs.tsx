@@ -41,7 +41,7 @@ export function WhyUs() {
             className="flex flex-col gap-8"
           >
             {reasons.map((reason, index) => (
-              <div key={index} className="flex gap-6 items-start p-8 bg-card border border-border hover:border-primary/50 transition-colors">
+              <div key={index} className="flex gap-6 items-start p-8 bg-card border border-border hover:border-primary/50 transition-colors rounded-[5px]">
                 <CheckCircle2 className="w-8 h-8 text-primary shrink-0" />
                 <div>
                   <h4 className="text-2xl font-serif font-bold text-foreground mb-2">{reason.title}</h4>
