@@ -124,7 +124,7 @@ export function Gallery({ open, onClose }: GalleryProps) {
           </div>
 
           {/* ── Content area ────────────────────────────────────────── */}
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto bg-[#f5f5f5]">
             <AnimatePresence mode="wait">
               {!activeClient ? (
                 /* ── Client selection grid ───────────────────────── */
@@ -134,7 +134,7 @@ export function Gallery({ open, onClose }: GalleryProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.3 }}
-                  className="p-6 md:p-10"
+                  className="p-6 md:p-10 bg-black/95"
                 >
                   <p className="text-white/50 text-sm mb-8 max-w-lg">
                     Select a client to explore their event gallery.
@@ -155,7 +155,6 @@ export function Gallery({ open, onClose }: GalleryProps) {
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                        {/* Coming soon badge if no images */}
                         {client.images.length === 0 && (
                           <div className="absolute top-3 right-3 bg-white/10 backdrop-blur-sm text-white/70 text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wide">
                             Coming soon
@@ -186,7 +185,7 @@ export function Gallery({ open, onClose }: GalleryProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.3 }}
-                  className="flex flex-col items-center justify-center h-full min-h-[60vh] text-center px-6"
+                  className="flex flex-col items-center justify-center h-full min-h-[60vh] text-center px-6 bg-black/95"
                 >
                   <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-5">
                     <span className="text-3xl">📸</span>
@@ -201,29 +200,49 @@ export function Gallery({ open, onClose }: GalleryProps) {
                   </p>
                 </motion.div>
               ) : (
-                /* ── Photo grid ──────────────────────────────────── */
+                /* ── Pinterest-style masonry photo grid ──────────── */
                 <motion.div
                   key={activeClient.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -16 }}
-                  transition={{ duration: 0.3 }}
-                  className="p-6 md:p-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="p-2 md:p-3"
                 >
-                  <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+                  <div
+                    className="
+                      columns-2
+                      sm:columns-3
+                      md:columns-4
+                      lg:columns-5
+                      xl:columns-6
+                      gap-2 md:gap-3
+                    "
+                  >
                     {activeClient.images.map((src, i) => (
                       <motion.button
                         key={src}
-                        initial={{ opacity: 0, scale: 0.97 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.04 }}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: Math.min(i * 0.03, 0.4), duration: 0.3 }}
                         onClick={() => setLightboxIdx(i)}
-                        className="break-inside-avoid w-full block rounded-xl overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary group"
+                        className="
+                          break-inside-avoid w-full block
+                          mb-2 md:mb-3
+                          rounded-2xl overflow-hidden
+                          focus:outline-none focus-visible:ring-2 focus-visible:ring-primary
+                          group cursor-zoom-in
+                          bg-white
+                          shadow-[0_1px_3px_rgba(0,0,0,0.12)]
+                          hover:shadow-[0_4px_16px_rgba(0,0,0,0.18)]
+                          transition-shadow duration-200
+                        "
                       >
                         <img
                           src={src}
                           alt={`${activeClient.name} photo ${i + 1}`}
-                          className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-auto object-cover block transition-opacity duration-200 group-hover:opacity-90"
+                          loading="lazy"
                         />
                       </motion.button>
                     ))}
