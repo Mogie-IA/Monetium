@@ -34,7 +34,7 @@ _Describe the high-level user-facing capabilities of this app once they exist._
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- All images added to the project must be in **WebP format**. Convert any JPG/PNG to WebP before copying to `public/images/` using: `magick input.jpg -quality 82 output.webp`
 
 ## Gotchas
 

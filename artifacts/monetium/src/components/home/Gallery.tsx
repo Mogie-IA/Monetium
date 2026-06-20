@@ -336,7 +336,7 @@ export function Gallery({ open, onClose }: GalleryProps) {
           </div>
 
           {/* ── Content area ────────────────────────────────────────── */}
-          <div className="flex-1 overflow-y-auto bg-[#f5f5f5]">
+          <div className="flex-1 overflow-y-auto bg-black">
             <AnimatePresence mode="wait">
               {!activeClient ? (
                 /* ── Client selection grid ───────────────────────── */
@@ -379,11 +379,6 @@ export function Gallery({ open, onClose }: GalleryProps) {
                               <span className="text-primary ml-1">{client.year}</span>
                             )}
                           </p>
-                          {client.images.length > 0 && (
-                            <p className="text-white/60 text-xs mt-1">
-                              {client.images.length} photos
-                            </p>
-                          )}
                         </div>
                       </motion.button>
                     ))}
@@ -444,10 +439,8 @@ export function Gallery({ open, onClose }: GalleryProps) {
                           rounded-2xl overflow-hidden
                           focus:outline-none focus-visible:ring-2 focus-visible:ring-primary
                           group cursor-zoom-in
-                          bg-white
-                          shadow-[0_1px_3px_rgba(0,0,0,0.12)]
-                          hover:shadow-[0_4px_16px_rgba(0,0,0,0.18)]
-                          transition-shadow duration-200
+                          bg-neutral-900
+                          transition-opacity duration-200
                         "
                       >
                         <img
