@@ -56,13 +56,13 @@ function useSlide(startAt: number, delay: number) {
       clearInterval(timer);
     };
   }, [delay]);
-  return idx;
+  return [idx, setIdx] as const;
 }
 
 export function Portfolio() {
-  const tallIdx     = useSlide(0, 0);
-  const topRightIdx = useSlide(5, 1667);
-  const botLeftIdx  = useSlide(10, 3333);
+  const [tallIdx,     setTallIdx]     = useSlide(0, 0);
+  const [topRightIdx]                 = useSlide(5, 1667);
+  const [botLeftIdx]                  = useSlide(10, 3333);
 
   const tall     = slides[tallIdx];
   const topRight = slides[topRightIdx];
@@ -189,10 +189,10 @@ export function Portfolio() {
               {slides.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setIdx(i)}
+                  onClick={() => setTallIdx(i)}
                   aria-label={`Go to slide ${i + 1}`}
                   className={`rounded-full transition-all duration-300 ${
-                    i === idx ? "w-4 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50"
+                    i === tallIdx ? "w-4 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50"
                   }`}
                 />
               ))}
