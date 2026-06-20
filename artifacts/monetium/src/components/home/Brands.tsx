@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { SiCocacola, SiUnilever } from "react-icons/si";
+import { SiCocacola, SiUnilever, SiSamsung } from "react-icons/si";
 
 type BrandEntry =
   | { kind: "icon"; name: string; Icon: React.ComponentType<{ className?: string }> }
   | { kind: "text"; name: string; style?: string };
 
 const brandList: BrandEntry[] = [
+  { kind: "icon",  name: "Samsung",            Icon: SiSamsung  },
   { kind: "icon",  name: "Coca-Cola",         Icon: SiCocacola },
   { kind: "text",  name: "Coca-Cola Hellenic", style: "text-base font-bold tracking-tight" },
   { kind: "icon",  name: "Unilever",           Icon: SiUnilever },
