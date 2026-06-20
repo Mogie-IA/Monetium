@@ -1,0 +1,297 @@
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+
+interface Client {
+  id: string;
+  name: string;
+  year: string;
+  images: string[];
+  cover: string;
+}
+
+const clients: Client[] = [
+  {
+    id: "flytime",
+    name: "Flytime",
+    year: "2025",
+    cover: "/images/slide-07.jpg",
+    images: [],
+  },
+  {
+    id: "dano",
+    name: "Dano",
+    year: "",
+    cover: "/images/slide-01.jpeg",
+    images: [],
+  },
+  {
+    id: "slb",
+    name: "SLB",
+    year: "2026",
+    cover: "/images/slide-09.jpg",
+    images: [],
+  },
+  {
+    id: "coc",
+    name: "C.O.C",
+    year: "2.0",
+    cover: "/images/slide-04.jpeg",
+    images: [],
+  },
+];
+
+interface GalleryProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+export function Gallery({ open, onClose }: GalleryProps) {
+  const [activeClient, setActiveClient] = useState<Client | null>(null);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightboxIdx(null), []);
+  const goBack = useCallback(() => {
+    if (lightboxIdx !== null) { closeLightbox(); return; }
+    setActiveClient(null);
+  }, [lightboxIdx, closeLightbox]);
+
+  const prevImage = useCallback(() => {
+    if (lightboxIdx === null || !activeClient) return;
+    setLightboxIdx((lightboxIdx - 1 + activeClient.images.length) % activeClient.images.length);
+  }, [lightboxIdx, activeClient]);
+
+  const nextImage = useCallback(() => {
+    if (lightboxIdx === null || !activeClient) return;
+    setLightboxIdx((lightboxIdx + 1) % activeClient.images.length);
+  }, [lightboxIdx, activeClient]);
+
+  useEffect(() => {
+    if (!open) { setActiveClient(null); setLightboxIdx(null); }
+  }, [open]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!open) return;
+      if (e.key === "Escape") { if (lightboxIdx !== null) closeLightbox(); else if (activeClient) setActiveClient(null); else onClose(); }
+      if (e.key === "ArrowLeft")  prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, lightboxIdx, activeClient, closeLightbox, prevImage, nextImage, onClose]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-50 bg-black/95 flex flex-col overflow-hidden"
+        >
+          {/* ── Top bar ─────────────────────────────────────────────── */}
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 shrink-0">
+            <div className="flex items-center gap-4">
+              {(activeClient || lightboxIdx !== null) && (
+                <button
+                  onClick={goBack}
+                  className="text-white/60 hover:text-white transition-colors flex items-center gap-1.5 text-sm"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back
+                </button>
+              )}
+              <div>
+                <p className="text-white/40 text-xs uppercase tracking-widest font-medium">Our Gallery</p>
+                {activeClient && (
+                  <p className="text-white font-semibold text-lg leading-tight">
+                    {activeClient.name}
+                    {activeClient.year && (
+                      <span className="text-primary ml-1.5">{activeClient.year}</span>
+                    )}
+                  </p>
+                )}
+              </div>
+            </div>
+            <button
+              onClick={onClose}
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* ── Content area ────────────────────────────────────────── */}
+          <div className="flex-1 overflow-y-auto">
+            <AnimatePresence mode="wait">
+              {!activeClient ? (
+                /* ── Client selection grid ───────────────────────── */
+                <motion.div
+                  key="clients"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-6 md:p-10"
+                >
+                  <p className="text-white/50 text-sm mb-8 max-w-lg">
+                    Select a client to explore their event gallery.
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {clients.map((client, i) => (
+                      <motion.button
+                        key={client.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.07 }}
+                        onClick={() => setActiveClient(client)}
+                        className="group relative aspect-[3/4] rounded-2xl overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                      >
+                        <img
+                          src={client.cover}
+                          alt={client.name}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        {/* Coming soon badge if no images */}
+                        {client.images.length === 0 && (
+                          <div className="absolute top-3 right-3 bg-white/10 backdrop-blur-sm text-white/70 text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wide">
+                            Coming soon
+                          </div>
+                        )}
+                        <div className="absolute bottom-0 left-0 right-0 p-5">
+                          <p className="text-white font-bold text-xl leading-tight">
+                            {client.name}
+                            {client.year && (
+                              <span className="text-primary ml-1">{client.year}</span>
+                            )}
+                          </p>
+                          {client.images.length > 0 && (
+                            <p className="text-white/60 text-xs mt-1">
+                              {client.images.length} photos
+                            </p>
+                          )}
+                        </div>
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+              ) : activeClient.images.length === 0 ? (
+                /* ── Empty state ─────────────────────────────────── */
+                <motion.div
+                  key="empty"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col items-center justify-center h-full min-h-[60vh] text-center px-6"
+                >
+                  <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-5">
+                    <span className="text-3xl">📸</span>
+                  </div>
+                  <p className="text-white font-semibold text-xl mb-2">Gallery coming soon</p>
+                  <p className="text-white/40 text-sm max-w-sm">
+                    Photos for{" "}
+                    <span className="text-white/70">
+                      {activeClient.name} {activeClient.year}
+                    </span>{" "}
+                    will be uploaded shortly.
+                  </p>
+                </motion.div>
+              ) : (
+                /* ── Photo grid ──────────────────────────────────── */
+                <motion.div
+                  key={activeClient.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-6 md:p-10"
+                >
+                  <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+                    {activeClient.images.map((src, i) => (
+                      <motion.button
+                        key={src}
+                        initial={{ opacity: 0, scale: 0.97 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.04 }}
+                        onClick={() => setLightboxIdx(i)}
+                        className="break-inside-avoid w-full block rounded-xl overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary group"
+                      >
+                        <img
+                          src={src}
+                          alt={`${activeClient.name} photo ${i + 1}`}
+                          className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* ── Lightbox overlay ────────────────────────────────────── */}
+          <AnimatePresence>
+            {lightboxIdx !== null && activeClient && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="absolute inset-0 z-10 bg-black flex items-center justify-center"
+                onClick={closeLightbox}
+              >
+                {/* Close */}
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white z-20"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+
+                {/* Counter */}
+                <div className="absolute top-5 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums z-20">
+                  {lightboxIdx + 1} / {activeClient.images.length}
+                </div>
+
+                {/* Prev */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                  className="absolute left-4 md:left-8 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white z-20 transition-colors"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                {/* Image */}
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={lightboxIdx}
+                    src={activeClient.images[lightboxIdx]}
+                    alt={`${activeClient.name} photo ${lightboxIdx + 1}`}
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.2 }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="max-h-[85vh] max-w-[90vw] object-contain rounded-xl shadow-2xl z-10"
+                  />
+                </AnimatePresence>
+
+                {/* Next */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                  className="absolute right-4 md:right-8 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white z-20 transition-colors"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
