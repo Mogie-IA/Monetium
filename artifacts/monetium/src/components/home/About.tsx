@@ -15,7 +15,7 @@ export function About() {
           style={{ height: "clamp(280px, 42vw, 560px)" }}
         >
           <img
-            src="/images/about.png"
+            src="/images/about.webp"
             alt="Behind the scenes event production"
             className="absolute inset-0 w-full h-full object-cover"
           />

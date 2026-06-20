@@ -28,18 +28,18 @@ export default function BrandGallery() {
   if (brand.id === "coca-cola" || brand.id === "cch") {
     galleryImages = [
       ...galleryImages,
-      "/images/gallery-coca-cola-1.png",
-      "/images/gallery-coca-cola-2.png",
-      "/images/gallery-coca-cola-3.png",
-      "/images/gallery-coca-cola-4.png",
+      "/images/gallery-coca-cola-1.webp",
+      "/images/gallery-coca-cola-2.webp",
+      "/images/gallery-coca-cola-3.webp",
+      "/images/gallery-coca-cola-4.webp",
     ];
   } else {
     // just pad out the gallery with other placeholders to make it look full
     galleryImages = [
       ...galleryImages,
-      "/images/portfolio-flytime.png",
-      "/images/portfolio-unilever.png",
-      "/images/portfolio-cch.png",
+      "/images/portfolio-flytime.webp",
+      "/images/portfolio-unilever.webp",
+      "/images/portfolio-cch.webp",
     ];
   }
 

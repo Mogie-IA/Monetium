@@ -1,9 +1,63 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
+
+const heroImages = [
+  "/images/flytime-01.webp", "/images/flytime-07.webp", "/images/flytime-14.webp",
+  "/images/flytime-21.webp", "/images/flytime-28.webp", "/images/flytime-35.webp",
+  "/images/flytime-42.webp", "/images/flytime-49.webp", "/images/flytime-56.webp",
+  "/images/flytime-63.webp", "/images/flytime-70.webp", "/images/flytime-77.webp",
+  "/images/dano-01.webp",    "/images/dano-06.webp",    "/images/dano-11.webp",
+  "/images/dano-16.webp",    "/images/dano-21.webp",    "/images/dano-26.webp",
+  "/images/dano-31.webp",    "/images/dano-36.webp",    "/images/dano-41.webp",
+  "/images/slb-02.webp",     "/images/slb-09.webp",     "/images/slb-16.webp",
+  "/images/slb-23.webp",     "/images/slb-30.webp",     "/images/slb-37.webp",
+  "/images/slb-44.webp",     "/images/slb-51.webp",     "/images/slb-58.webp",
+  "/images/coc-01.webp",     "/images/coc-04.webp",     "/images/coc-09.webp",
+  "/images/coc-13.webp",     "/images/coc-17.webp",     "/images/coc-20.webp",
+];
+
+const NH = heroImages.length;
+
+function HeroSlide({ src, alt }: { src: string; alt: string }) {
+  return (
+    <AnimatePresence mode="sync">
+      <motion.img
+        key={src}
+        src={src}
+        alt={alt}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1.0, ease: "easeInOut" }}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+    </AnimatePresence>
+  );
+}
+
+function useHeroSlide(startAt: number, delay: number) {
+  const [idx, setIdx] = useState(startAt % NH);
+  useEffect(() => {
+    let timer: ReturnType<typeof setInterval>;
+    const timeout = setTimeout(() => {
+      timer = setInterval(() => setIdx((p) => (p + 1) % NH), 5000);
+    }, delay);
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(timer);
+    };
+  }, [delay]);
+  return idx;
+}
 
 export function Hero() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+  const tallIdx     = useHeroSlide(0,  0);
+  const botLeftIdx  = useHeroSlide(12, 1667);
+  const botRightIdx = useHeroSlide(24, 3333);
 
   return (
     <section id="home" className="bg-white overflow-hidden" style={{ height: "calc(100dvh - 4rem)" }}>
@@ -38,15 +92,14 @@ export function Hero() {
           </p>
         </motion.div>
 
-        {/* Card 2: Tall image (spans both rows) */}
+        {/* Card 2: Tall cycling image (spans both rows) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           className="row-span-2 relative overflow-hidden rounded-2xl"
         >
-          <img src="/images/hero.png" alt="Brand Activation Event"
-            className="w-full h-full object-cover" />
+          <HeroSlide src={heroImages[tallIdx]} alt="Brand Activation Event" />
           <div className="absolute inset-0 bg-black/20" />
           <motion.button
             initial={{ opacity: 0, scale: 0.7 }}
@@ -74,7 +127,7 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Cards 3 & 4: Bottom-left image tiles */}
+        {/* Cards 3 & 4: Bottom-left cycling image tiles */}
         <div className="grid grid-cols-2 gap-3">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -82,8 +135,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="relative overflow-hidden rounded-2xl"
           >
-            <img src="/images/portfolio-cch.png" alt="Brand Experience"
-              className="w-full h-full object-cover" />
+            <HeroSlide src={heroImages[botLeftIdx]} alt="Brand Experience" />
             <div className="absolute inset-0 bg-black/45 rounded-2xl" />
             <span className="absolute bottom-3 left-3 text-white text-[10px] font-black tracking-widest uppercase">
               #EXPERIENCE
@@ -95,8 +147,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="relative overflow-hidden rounded-2xl"
           >
-            <img src="/images/portfolio-flytime.png" alt="Live Event Activation"
-              className="w-full h-full object-cover" />
+            <HeroSlide src={heroImages[botRightIdx]} alt="Live Event Activation" />
             <div className="absolute inset-0 bg-black/45 rounded-2xl" />
             <span className="absolute bottom-3 left-3 text-white text-[10px] font-black tracking-widest uppercase">
               #ACTIVATION
@@ -126,15 +177,14 @@ export function Hero() {
           </p>
         </motion.div>
 
-        {/* Tall hero image */}
+        {/* Tall cycling hero image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative overflow-hidden rounded-2xl flex-1 min-h-0"
         >
-          <img src="/images/hero.png" alt="Brand Activation Event"
-            className="w-full h-full object-cover" />
+          <HeroSlide src={heroImages[tallIdx]} alt="Brand Activation Event" />
           <div className="absolute inset-0 bg-black/25" />
           <div className="absolute bottom-4 left-4 right-4 flex gap-2">
             <button onClick={() => scrollTo("portfolio")}
@@ -148,7 +198,7 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Two small tiles */}
+        {/* Two small cycling tiles */}
         <div className="grid grid-cols-2 gap-2 shrink-0 h-28">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -156,8 +206,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="relative overflow-hidden rounded-2xl"
           >
-            <img src="/images/portfolio-cch.png" alt="Experience"
-              className="w-full h-full object-cover" />
+            <HeroSlide src={heroImages[botLeftIdx]} alt="Experience" />
             <div className="absolute inset-0 bg-black/45" />
             <span className="absolute bottom-2 left-2 text-white text-[8px] font-black tracking-widest uppercase">
               #EXPERIENCE
@@ -169,8 +218,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.35 }}
             className="relative overflow-hidden rounded-2xl"
           >
-            <img src="/images/portfolio-flytime.png" alt="Activation"
-              className="w-full h-full object-cover" />
+            <HeroSlide src={heroImages[botRightIdx]} alt="Activation" />
             <div className="absolute inset-0 bg-black/45" />
             <span className="absolute bottom-2 left-2 text-white text-[8px] font-black tracking-widest uppercase">
               #ACTIVATION

@@ -8,22 +8,22 @@ const stats = [
 ];
 
 const slides = [
-  "/images/slide-01.jpeg",
-  "/images/slide-02.jpeg",
-  "/images/slide-03.jpeg",
-  "/images/slide-04.jpeg",
-  "/images/slide-05.jpeg",
-  "/images/slide-06.jpg",
-  "/images/slide-07.jpg",
-  "/images/slide-08.jpg",
-  "/images/slide-09.jpg",
-  "/images/slide-10.jpg",
-  "/images/slide-11.jpg",
-  "/images/slide-12.jpg",
-  "/images/slide-13.jpg",
-  "/images/slide-14.jpg",
-  "/images/slide-15.jpg",
-  "/images/slide-16.jpg",
+  "/images/slide-01.webp",
+  "/images/slide-02.webp",
+  "/images/slide-03.webp",
+  "/images/slide-04.webp",
+  "/images/slide-05.webp",
+  "/images/slide-06.webp",
+  "/images/slide-07.webp",
+  "/images/slide-08.webp",
+  "/images/slide-09.webp",
+  "/images/slide-10.webp",
+  "/images/slide-11.webp",
+  "/images/slide-12.webp",
+  "/images/slide-13.webp",
+  "/images/slide-14.webp",
+  "/images/slide-15.webp",
+  "/images/slide-16.webp",
 ];
 
 const N = slides.length;
@@ -129,7 +129,7 @@ export function Portfolio() {
               {/* Coke Studio stat */}
               <div className="relative bg-primary rounded-2xl p-5 flex flex-col justify-between overflow-hidden">
                 <img
-                  src="/images/brand-coca-cola-1.png"
+                  src="/images/brand-coca-cola-1.webp"
                   alt=""
                   aria-hidden
                   className="absolute inset-0 w-full h-full object-contain scale-110 opacity-[0.12] pointer-events-none"
@@ -173,7 +173,7 @@ export function Portfolio() {
 
               <div className="relative bg-primary rounded-2xl p-5 flex flex-col justify-between h-36 overflow-hidden">
                 <img
-                  src="/images/brand-coca-cola-1.png"
+                  src="/images/brand-coca-cola-1.webp"
                   alt=""
                   aria-hidden
                   className="absolute inset-0 w-full h-full object-contain scale-110 opacity-[0.12] pointer-events-none"
