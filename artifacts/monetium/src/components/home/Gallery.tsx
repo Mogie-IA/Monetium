@@ -225,8 +225,20 @@ const clients: Client[] = [
     id: "coc",
     name: "C.O.C",
     year: "2.0",
-    cover: "/images/slide-04.jpeg",
-    images: [],
+    cover: "/images/coc-04.jpg",
+    images: [
+      "/images/coc-01.jpg",
+      "/images/coc-02.jpg",
+      "/images/coc-03.jpg",
+      "/images/coc-04.jpg",
+      "/images/coc-05.jpg",
+      "/images/coc-06.jpg",
+      "/images/coc-07.jpg",
+      "/images/coc-08.jpg",
+      "/images/coc-09.jpg",
+      "/images/coc-10.jpg",
+      "/images/coc-11.jpg",
+    ],
   },
 ];
 
