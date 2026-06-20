@@ -1,17 +1,64 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const stats = [
   { value: "5,000+", label: "Attendees",         sub: "Unilever Sales Conference" },
   { value: "3×",     label: "Consecutive Years", sub: "Coke Studio Activation"   },
 ];
 
-const images = [
-  { src: "/images/portfolio-flytime.png",  alt: "Flytime Live Experience"    },
-  { src: "/images/portfolio-unilever.png", alt: "Unilever Sales Conference"  },
-  { src: "/images/portfolio-cch.png",      alt: "CCH Council of Chiefs"      },
+const slides = [
+  "/images/slide-01.jpeg",
+  "/images/slide-02.jpeg",
+  "/images/slide-03.jpeg",
+  "/images/slide-04.jpeg",
+  "/images/slide-05.jpeg",
+  "/images/slide-06.jpg",
+  "/images/slide-07.jpg",
+  "/images/slide-08.jpg",
+  "/images/slide-09.jpg",
+  "/images/slide-10.jpg",
+  "/images/slide-11.jpg",
+  "/images/slide-12.jpg",
+  "/images/slide-13.jpg",
+  "/images/slide-14.jpg",
+  "/images/slide-15.jpg",
+  "/images/slide-16.jpg",
 ];
 
+const N = slides.length;
+
+function SlideImage({ src, alt }: { src: string; alt: string }) {
+  return (
+    <AnimatePresence mode="sync">
+      <motion.img
+        key={src}
+        src={src}
+        alt={alt}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+    </AnimatePresence>
+  );
+}
+
 export function Portfolio() {
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIdx((prev) => (prev + 1) % N);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const tall   = slides[idx];
+  const topRight  = slides[(idx + 5) % N];
+  const botLeft   = slides[(idx + 10) % N];
+  const mobile    = slides[idx];
+
   return (
     <section id="portfolio" className="py-24 md:py-32 bg-muted/40 border-y border-border">
       <div className="container mx-auto px-6 lg:px-12">
@@ -45,29 +92,25 @@ export function Portfolio() {
             <p className="text-background/80 text-lg font-medium">{stats[0].label}</p>
           </div>
 
-          {/* [0,1] Tall image spanning 2 rows */}
-          <div className="col-span-1 row-span-2 overflow-hidden rounded-2xl">
-            <img src={images[0].src} alt={images[0].alt}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+          {/* [0,1] Tall image spanning 2 rows — slideshow */}
+          <div className="col-span-1 row-span-2 overflow-hidden rounded-2xl relative">
+            <SlideImage src={tall} alt="Portfolio slideshow" />
           </div>
 
-          {/* [0,2] Image tile */}
-          <div className="col-span-1 row-span-1 overflow-hidden rounded-2xl">
-            <img src={images[2].src} alt={images[2].alt}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+          {/* [0,2] Image tile — slideshow offset +5 */}
+          <div className="col-span-1 row-span-1 overflow-hidden rounded-2xl relative">
+            <SlideImage src={topRight} alt="Portfolio slideshow" />
           </div>
 
-          {/* [1,0] Image tile */}
-          <div className="col-span-1 row-span-1 overflow-hidden rounded-2xl">
-            <img src={images[1].src} alt={images[1].alt}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+          {/* [1,0] Image tile — slideshow offset +10 */}
+          <div className="col-span-1 row-span-1 overflow-hidden rounded-2xl relative">
+            <SlideImage src={botLeft} alt="Portfolio slideshow" />
           </div>
 
           {/* [1,2] Two stat tiles side by side */}
           <div className="col-span-1 row-span-1 grid grid-cols-2 gap-4">
             {/* Coke Studio stat — red + Coke logo watermark */}
             <div className="relative bg-primary rounded-2xl p-5 flex flex-col justify-between overflow-hidden">
-              {/* Coke logo watermark */}
               <img
                 src="/images/brand-coca-cola-1.png"
                 alt=""
@@ -128,12 +171,23 @@ export function Portfolio() {
             </div>
           </div>
 
-          {/* Images */}
-          {images.map((img, i) => (
-            <div key={i} className="h-56 overflow-hidden rounded-2xl">
-              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+          {/* Single mobile slideshow — full width */}
+          <div className="relative h-72 overflow-hidden rounded-2xl">
+            <SlideImage src={mobile} alt="Portfolio slideshow" />
+            {/* Dot indicators */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setIdx(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === idx ? "w-4 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50"
+                  }`}
+                />
+              ))}
             </div>
-          ))}
+          </div>
 
           {/* Brands tile */}
           <div className="bg-background border border-border rounded-2xl p-5 flex items-center justify-between">
