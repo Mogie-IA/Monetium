@@ -44,20 +44,30 @@ function SlideImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-export function Portfolio() {
-  const [idx, setIdx] = useState(0);
-
+function useSlide(startAt: number, delay: number) {
+  const [idx, setIdx] = useState(startAt % N);
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIdx((prev) => (prev + 1) % N);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+    let timer: ReturnType<typeof setInterval>;
+    const timeout = setTimeout(() => {
+      timer = setInterval(() => setIdx((p) => (p + 1) % N), 5000);
+    }, delay);
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(timer);
+    };
+  }, [delay]);
+  return idx;
+}
 
-  const tall   = slides[idx];
-  const topRight  = slides[(idx + 5) % N];
-  const botLeft   = slides[(idx + 10) % N];
-  const mobile    = slides[idx];
+export function Portfolio() {
+  const tallIdx     = useSlide(0, 0);
+  const topRightIdx = useSlide(5, 1667);
+  const botLeftIdx  = useSlide(10, 3333);
+
+  const tall     = slides[tallIdx];
+  const topRight = slides[topRightIdx];
+  const botLeft  = slides[botLeftIdx];
+  const mobile   = slides[tallIdx];
 
   return (
     <section id="portfolio" className="py-24 md:py-32 bg-muted/40 border-y border-border">
