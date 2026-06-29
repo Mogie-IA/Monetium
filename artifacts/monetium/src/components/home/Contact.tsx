@@ -69,6 +69,8 @@ export function Contact() {
             className="flex flex-col gap-8 pt-1"
           >
             <div>
+              <p className="text-sm text-foreground leading-relaxed">1, Ibadan Close, Off Afolabi Close,</p>
+              <p className="text-sm text-foreground leading-relaxed">Off Agbaoku Street, by TFC Opebi,</p>
               <p className="text-sm text-foreground leading-relaxed">Lagos, Nigeria</p>
               <p className="text-sm text-foreground/50">2025</p>
             </div>
@@ -188,16 +190,16 @@ export function Contact() {
         {/* ── Large contact details ──────────────────────── */}
         <div className="border-t border-border/60 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <a
-            href="mailto:info@monetium.ng"
+            href="mailto:info@monetiumltd.com"
             className="text-2xl md:text-4xl lg:text-5xl font-black text-foreground hover:text-primary transition-colors leading-none"
           >
-            info@monetium.ng
+            info@monetiumltd.com
           </a>
           <a
-            href="tel:+2340000000000"
+            href="tel:+2348063218553"
             className="text-2xl md:text-4xl lg:text-5xl font-black text-foreground hover:text-primary transition-colors leading-none"
           >
-            +234 000 000 0000
+            +234 806 321 8553
           </a>
         </div>
 
